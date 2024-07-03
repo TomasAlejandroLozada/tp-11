@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pedidos de Pizzas</title>
+</head>
+<body>
+    <h1>Listado de Pedidos de Pizzas</h1>
+    <?php
+    $filename = 'pedidos.txt';
+
+    if (file_exists($filename)) {
+        $content = file_get_contents($filename);
+        if ($content) {
+            echo nl2br(htmlspecialchars($content));
+        } else {
+            echo "<p>No hay pedidos registrados.</p>";
+        }
+    } else {
+        echo "<p>El archivo de pedidos no existe.</p>";
+    }
+    ?>
+</body>
+</html>
