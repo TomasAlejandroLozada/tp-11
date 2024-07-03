@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificar Número Par o Impar</title>
+</head>
+<body>
+    <h1>Formulario para Verificar Número Par o Impar</h1>
+    <form action="procesar_numero.php" method="post">
+        <label for="numero">Número:</label>
+        <input type="number" id="numero" name="numero" required><br><br>
+        
+        <input type="submit" value="Verificar">
+    </form>
+</body>
+</html>
+<?php
+function es_par($numero) {
+    return $numero % 2 == 0;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $numero = $_POST['numero'];
+    
+    if (es_par($numero)) {
+        echo "El número $numero es par.";
+    } else {
+        echo "El número $numero es impar.";
+    }
+}
+?>
