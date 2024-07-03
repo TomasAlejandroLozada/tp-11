@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comprobantes de Inscripción</title>
+</head>
+<body>
+    <h1>Listado de Comprobantes de Inscripción</h1>
+    <?php
+    $filename = 'comprobante.txt';
+
+    if (file_exists($filename)) {
+        $content = file_get_contents($filename);
+        if ($content) {
+            echo nl2br(htmlspecialchars($content));
+        } else {
+            echo "<p>No hay comprobantes de inscripción registrados.</p>";
+        }
+    } else {
+        echo "<p>El archivo de comprobantes no existe.</p>";
+    }
+    ?>
+</body>
+</html>
