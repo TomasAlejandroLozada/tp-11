@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuario</title>
+</head>
+<body>
+    <h1>Formulario de Registro</h1>
+    <form action="procesar_registro.php" method="post">
+        <label for="usuario">Nombre de Usuario:</label>
+        <input type="text" id="usuario" name="usuario" required><br><br>
+        
+        <label for="clave1">Clave:</label>
+        <input type="password" id="clave1" name="clave1" required><br><br>
+        
+        <label for="clave2">Confirmar Clave:</label>
+        <input type="password" id="clave2" name="clave2" required><br><br>
+        
+        <input type="submit" value="Registrar">
+    </form>
+</body>
+</html>
+<?php
+function verificar_claves($clave1, $clave2) {
+    if ($clave1 !== $clave2) {
+        return false;
+    }
+    return true;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $usuario = $_POST['usuario'];
+    $clave1 = $_POST['clave1'];
+    $clave2 = $_POST['clave2'];
+
+    if (verificar_claves($clave1, $clave2)) {
+        echo "Usuario registrado exitosamente. Bienvenido, $usuario!";
+        // Aquí puedes añadir el código para guardar el usuario en una base de datos o archivo
+    } else {
+        echo "Error: Las claves ingresadas no coinciden.";
+    }
+}
+?>
